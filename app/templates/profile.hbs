@@ -1,0 +1,27 @@
+{{#if auth0.isAuthed}}
+
+<h2>Your User Profile</h2>
+
+<div class="media">
+  <div class="media-left media-middle">
+    <img class="profile user-icon img-circle" {{bind-attr src="model.picture" alt="model.nickname"}}>
+  </div>
+  <div class="media-body">
+    <h3 class="media-heading">{{model.nickname}}</h3>
+  </div>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Email</dt>
+  <dd>{{model.email}}</dd>
+</dl>
+
+{{else}}
+
+<p>
+  Please login to see your user profile.
+</p>
+
+{{/if}}
+
+{{outlet}}

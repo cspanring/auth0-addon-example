@@ -13,9 +13,22 @@ module.exports = function(environment) {
       }
     },
 
+    'ember-cli-auth0-lock': {
+      cid: 'nu8KrtMcxWg9Ohh38TyUbn7lYmJkOwA8',
+      domain: 'cspanring.auth0.com'
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    contentSecurityPolicy: {
+      'font-src': "'self' data: fonts.gstatic.com cdn.auth0.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
+      'script-src': "'self' 'unsafe-eval' *.auth0.com",
+      'img-src': '*.gravatar.com *.wp.com *.githubusercontent.com',
+      'connect-src': "'self' *.auth0.com"
     }
   };
 
@@ -25,6 +38,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV['ember-cli-auth0-lock'].logoutUrl = 'http://localhost:4200/logout';
+
   }
 
   if (environment === 'test') {
@@ -40,7 +56,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV['ember-cli-auth0-lock'].logoutUrl = 'http://ember-cli-auth0-lock.divshot.io/logout';
   }
 
   return ENV;

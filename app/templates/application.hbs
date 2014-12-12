@@ -1,3 +1,60 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+<a href="https://github.com/cspanring/auth0-addon-example"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
 
-{{outlet}}
+<div class="container">
+
+  <!-- Static navbar -->
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        {{#link-to 'index' classNames='navbar-brand'}}Ember Auth0 Lock Example{{/link-to}}
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          {{#link-to 'index' tagName='li'}}
+          <a {{bind-attr href='view.href'}}>Home</a>
+          {{/link-to}}
+          {{#link-to 'unprotected' tagName='li'}}
+          <a {{bind-attr href='view.href'}}>Unprotected</a>
+          {{/link-to}}
+          {{#link-to 'protected' tagName='li' disabled=auth0.isAnonymous}}
+          <a {{bind-attr href='view.href'}}>Protected</a>
+          {{/link-to}}
+        </ul>
+
+        {{#if auth0.isAnonymous}}
+        <p class="navbar-text navbar-right">
+          <a href="#" class="navbar-link" {{action 'login'}}>Login</a>
+          or
+          <a href="#" class="navbar-link" {{action 'signup'}}>Sign up</a>
+        </p>
+        {{/if}}
+
+        {{#if auth0.isAuthed}}
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="user-icon dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img class="user-icon img-circle" {{bind-attr src="auth0.profile.picture" alt="auth0.profile.nickname"}}>
+              {{auth0.profile.nickname}} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>{{#link-to 'profile'}}Profile{{/link-to}}</li>
+              <li class="divider"></li>
+              <li><a href="#" {{action 'logout'}}>Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+        {{/if}}
+
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+  </nav>
+
+  {{outlet}}
+
+</div> <!-- /container -->

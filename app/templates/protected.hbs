@@ -1,0 +1,13 @@
+<h2>Protected Route</h2>
+
+<p>
+  Only authenticated users should see this.
+</p>
+
+<ul>
+  {{#each}}
+  <li>{{this}}</li>
+  {{/each}}
+</ul>
+
+{{outlet}}

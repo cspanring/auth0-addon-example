@@ -1,7 +1,6 @@
 # Auth0-addon-example
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+A simple example to illustrate the integration of the [Ember CLI Auth0 Lock](https://github.com/cspanring/ember-cli-auth0-lock) Addon with an Ember ClI project.
 
 ## Prerequisites
 
@@ -12,8 +11,8 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* change into the new directory
+* `git clone https://github.com/cspanring/auth0-addon-example.git`
+* `cd auth0-addon-example`
 * `npm install`
 * `bower install`
 
@@ -38,7 +37,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+* `ember divshot push production`
 
 ## Further Reading / Useful Links
 
@@ -47,4 +46,3 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
